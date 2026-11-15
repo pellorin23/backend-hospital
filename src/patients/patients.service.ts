@@ -4,16 +4,21 @@ import { UpdatePatientDto } from './dto/update-patient.dto';
 
 @Injectable()
 export class PatientsService {
+  private patients = [
+    {id:1,name:'John Doe',age:30},
+    {id:2,name:"smith",age:30},
+  ];
   create(createPatientDto: CreatePatientDto) {
     return 'This action adds a new patient';
   }
 
   findAll() {
-    return `This action returns all patients`;
+    return this.patients;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} patient`;
+    const p=this.patients.find(p=>p.id==id);
+    return p;
   }
 
   update(id: number, updatePatientDto: UpdatePatientDto) {
